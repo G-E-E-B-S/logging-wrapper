@@ -1,0 +1,21 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := logging
+
+LOCAL_MODULE_FILENAME := liblogging
+
+ifeq ($(USE_ARM_MODE),1)
+LOCAL_ARM_MODE := arm
+endif
+
+LOCAL_SRC_FILES := ../src/log.cpp
+
+LOCAL_CFLAGS    += -DIS_ANDROID
+LOCAL_CPPFLAGS    += -DIS_ANDROID
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../includes
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
+
+include $(BUILD_STATIC_LIBRARY)
